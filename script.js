@@ -24,7 +24,11 @@ document.querySelector(".check").addEventListener("click", function () {
 
     document.querySelector("body").style.backgroundColor = "#60b347";
 
-    document.querySelector(".number").style.width = "30rem";
+    if (window.matchMedia("(max-width: 600px)")) {
+      document.querySelector(".number").style.width = "20rem";
+    } else {
+      document.querySelector(".number").style.width = "30rem";
+    }
 
     if (score > highScore) {
       highScore = score;
@@ -41,7 +45,11 @@ document.querySelector(".check").addEventListener("click", function () {
       score = 0;
       document.querySelector(".score").textContent = score;
       document.querySelector("body").style.backgroundColor = "#Ff0016";
-      document.querySelector(".number").style.width = "30rem";
+      if (window.matchMedia("(max-width: 600px)")) {
+        document.querySelector(".number").style.width = "20rem";
+      } else {
+        document.querySelector(".number").style.width = "30rem";
+      }
       document.querySelector(".number").textContent = secretNumber;
     }
   }
@@ -82,5 +90,9 @@ document.querySelector(".again").addEventListener("click", function () {
   document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".number").textContent = "?";
   document.querySelector(".guess").value = "";
-  document.querySelector(".number").style.width = "15rem";
+  if (window.matchMedia("(max-width: 600px)")) {
+    document.querySelector(".number").style.width = "10rem";
+  } else {
+    document.querySelector(".number").style.width = "15rem";
+  }
 });
