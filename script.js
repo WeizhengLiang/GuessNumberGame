@@ -11,14 +11,20 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highScore = 0;
 
+const displayMessage = (message) => {
+  document.querySelector(".message").textContent = message;
+};
+
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
   console.log(guess);
 
   if (!guess) {
-    document.querySelector(".message").textContent = "Input a Number!";
+    // document.querySelector(".message").textContent = "Input a Number!";
+    displayMessage("Input a Number!");
   } else if (guess === secretNumber) {
-    document.querySelector(".message").textContent = "Correct!";
+    // document.querySelector(".message").textContent = "Correct!";
+    displayMessage("Correct!");
 
     document.querySelector(".number").textContent = secretNumber;
 
@@ -36,12 +42,14 @@ document.querySelector(".check").addEventListener("click", function () {
     }
   } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector(".message").textContent =
-        guess < secretNumber ? "Too Low!!!" : "Too High!!!";
+      // document.querySelector(".message").textContent =
+      //   guess < secretNumber ? "Too Low!!!" : "Too High!!!";
+      displayMessage(guess < secretNumber ? "Too Low!!!" : "Too High!!!");
       score--;
       document.querySelector(".score").textContent = score;
     } else {
-      document.querySelector(".message").textContent = "You lost!";
+      // document.querySelector(".message").textContent = "You lost!";
+      displayMessage("You lost!");
       score = 0;
       document.querySelector(".score").textContent = score;
       document.querySelector("body").style.backgroundColor = "#Ff0016";
@@ -83,7 +91,8 @@ document.querySelector(".check").addEventListener("click", function () {
 });
 
 document.querySelector(".again").addEventListener("click", function () {
-  document.querySelector(".message").textContent = "Start guessing...";
+  // document.querySelector(".message").textContent = "Start guessing...";
+  displayMessage("Start guessing...");
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
   document.querySelector(".score").textContent = score;
